@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.ui.templateDir" value="template" />
+	<constant name="struts.ui.templateSuffix" value="ftl" />
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts..i18n.encoding" value="GBK" />
+	<package name="admin" namespace="/admin" extends="struts-default,json-default">
+
+		<interceptors>
+			<!--判断是否登录 和 是否有访问权限 -->
+			<interceptor name="auth" class="com.sea.action.LoginInterceptor" />
+
+			<interceptor name="json"
+				class="org.apache.struts2.json.JSONInterceptor" />
+
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="auth"></interceptor-ref>
+				<interceptor-ref name="fileUploadStack" />
+				<interceptor-ref name="defaultStack">
+					<!--覆盖defultStack中的exception设置，启用它的日志功能 -->
+					<param name="exception.logEnabled">true</param>
+					<param name="exception.logLevel">error</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-action-ref name="index" />
+
+		<!-- 全局结果 -->
+		<global-results>
+			<!-- 拦截没登录返回结果 -->
+			<result name="noLogin" type="redirect">/admin/login.html</result>
+			<!-- 拦截没有权限返回结果 -->
+			<result name="noPower" type="redirect">/admin/login.html</result>
+			<result name="exceptionPage" type="dispatcher">
+				<param name="location">/admin/Error.html</param>
+			</result>
+		</global-results>
+		<!-- -->
+		<global-exception-mappings>
+			<exception-mapping exception="org.hi.framework.web.BusinessException"
+				result="exceptionPage" />
+			<exception-mapping exception="org.acegisecurity.AccessDeniedException"
+				result="exceptionPage" />
+			<exception-mapping result="exceptionPage"
+				exception="java.lang.Exception" />
+		</global-exception-mappings>
+
+		<action name="Login_*" class="com.sea.action.LoginAction"
+			method="{1}">
+			<result name="adminLogin" type="chain">index</result>
+			<result name="noPower">
+				/admin/login.html
+			</result>
+			<result name="logout">
+				/admin/login.html
+			</result>
+			<result name="exceptionPage">
+				/admin/login.html
+			</result>
+		</action>
+
+		<action name="userImport" class="com.sea.action.UserImportAction"
+			method="fileUpload">
+			<result type="json" name="upload">
+				<param name="contentType">
+					text/html
+				</param>
+			</result>
+			<result type="json" name="error">
+				<param name="contentType">
+					text/html
+				</param>
+			</result>
+			<interceptor-ref name="myStack"></interceptor-ref>
+		</action>
+		
+		<action name="fileUpload" class="com.sea.action.FileAction"
+			method="photoUpload">
+			<result type="json" name="upload">
+				<param name="contentType">
+					text/html
+				</param>
+			</result>
+			<result type="json" name="error">
+				<param name="contentType">
+					text/html
+				</param>
+			</result>
+			<interceptor-ref name="myStack"></interceptor-ref>
+		</action>
+
+		<action name="fileDown" class="com.sea.action.FileDownLoadAction"
+			method="userTemplet">
+			<result name="download" type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="contentDisposition">attachment;fileName="${downloadChineseFileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+			<interceptor-ref name="myStack"></interceptor-ref>
+		</action>
+
+		<action name="*_*" class="com.sea.action.{1}Action" method="{2}">
+			<result name="profile" type="json">
+				<param name="root">user</param>
+			</result>
+			<result name="list" type="json">
+				<param name="root">returnMessage</param>
+			</result>
+			<result name="delete">
+				/admin/User_list.html
+			</result>
+			<result name="edit" type="json">
+				<param name="root">msg</param>
+			</result>
+			<result name="add">
+				/admin/User_list.html
+			</result>
+			<result name="update" type="chain">index</result>
+			<result name="newPassOk" type="chain">Login_logOut</result>
+			<result>
+				/admin/succes.jsp
+			</result>
+			<interceptor-ref name="myStack"></interceptor-ref>
+		</action>
+
+		<action name="index" class="com.sea.action.IndexAction" method="excute">
+			<result name="success">
+				/admin/index.html
+			</result>
+			<interceptor-ref name="myStack"></interceptor-ref>
+		</action>
+
+		<action name="testJson" class="com.sea.action.TestJson" method="excute">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<interceptor-ref name="myStack"></interceptor-ref>
+		</action>
+
+	</package>
+
+	<package name="user" namespace="/web" extends="json-default">
+
+		<action name="index" class="com.sea.action.IndexAction" method="excute">
+			<result>
+				/index.html
+			</result>
+		</action>
+		<action name="register" class="com.sea.action.RegisterAction"
+			method="excute">
+			<result name="success">/succes.jsp</result>
+			<result name="input">/register.jsp</result>
+			<result name="fail">/register.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="Login_*" class="com.sea.action.LoginAction" method="{1}">
+			<result name="userLogin" type="json">
+				<param name="root">dataMap</param>
+				<param name="excludeNullProperties"></param>
+			</result>
+		</action>
+
+	</package>
+
+</struts>

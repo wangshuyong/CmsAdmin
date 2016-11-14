@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>User Account - Bootstrap Admin</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />    
+    
+    <link href="./css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./css/bootstrap-responsive.min.css" rel="stylesheet" />
+    
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet" />
+    <link href="./css/font-awesome.css" rel="stylesheet" />
+    
+    <link href="./css/adminia.css" rel="stylesheet" /> 
+    <link href="./css/adminia-responsive.css" rel="stylesheet" /> 
+    
+    
+    <link href="./css/pages/plans.css" rel="stylesheet" /> 
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+
+<body>
+	
+<div class="navbar navbar-fixed-top">
+	
+	<div class="navbar-inner">
+		
+		<div class="container">
+			
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
+				<span class="icon-bar"></span> 
+				<span class="icon-bar"></span> 
+				<span class="icon-bar"></span> 				
+			</a>
+			
+			<a class="brand" href="./">我的主页</a>
+			
+			<div class="nav-collapse">
+            
+				<ul class="nav pull-right">
+					<li>
+						<a href="#"><span class="badge badge-warning">7</span></a>
+					</li>
+					
+					<li class="divider-vertical"></li>
+					
+					<li class="dropdown">
+						
+                        <a href="./"><i class="icon-off"></i> Logout</a>
+						
+
+					</li>
+				</ul>
+				
+			</div> <!-- /nav-collapse -->
+			
+		</div> <!-- /container -->
+		
+	</div> <!-- /navbar-inner -->
+	
+</div> <!-- /navbar -->
+
+
+
+
+<div id="content">
+	
+	<div class="container">
+		
+		<div class="row">
+			
+			<div class="span3">
+				
+				<div class="account-container">
+				
+					<div class="account-avatar">
+						<img src="./img/headshot.png" alt="" class="thumbnail" />
+					</div> <!-- /account-avatar -->
+				
+					<div class="account-details">
+					
+						<span class="account-name">龙宗林</span>
+						
+						<span class="account-role">3号楼4单元501的业主，你好</span>
+					
+					</div> <!-- /account-details -->
+				
+				</div> <!-- /account-container -->
+				
+				<hr />
+				
+				<ul id="main-nav" class="nav nav-tabs nav-stacked">
+										
+					<li class="active">
+						<a href="./account.html">
+							<i class="icon-user"></i>
+							我的资料							
+						</a>
+					</li>
+                    
+					<li>
+						<a href="./faq.html">
+							<i class="icon-pushpin"></i>
+							物业广播
+						</a>
+					</li>
+					
+				</ul>				
+				
+				<hr />
+		
+			</div> <!-- /span3 -->
+			
+			
+			
+			<div class="span9">
+				
+				<h1 class="page-title">
+					<i class="icon-th-large"></i>
+					我的资料				
+				</h1>
+				
+				
+				<div class="row">
+					
+					<div class="span9">
+				
+						<div class="widget">
+							
+							<div class="widget-header">
+								<h3>Basic Information</h3>
+							</div> <!-- /widget-header -->
+									
+							<div class="widget-content">
+
+								<div class="tabbable">
+						<ul class="nav nav-tabs">
+						  <li class="active">
+						    <a href="#1" data-toggle="tab">Profile</a>
+						  </li>
+						  <li><a href="#2" data-toggle="tab">修改密码</a></li>
+                          <li><a href="#3" data-toggle="tab">修改头像</a></li>
+						</ul>
+						
+						<br />
+						
+							<div class="tab-content">
+								<div class="tab-pane active" id="1">
+								<form id="edit-profile" class="form-horizontal" />
+									<fieldset>
+										
+										<div class="control-group">											
+											<label class="control-label" for="username">手机号</label>
+											<div class="controls">
+												<input type="text" class="input-medium disabled" id="username" value="goideate" disabled="" />
+												<p class="help-block">手机号为登录账户，请谨慎修改，以免影响您的登录</p>
+											</div> <!-- /controls -->				
+										</div> <!-- /control-group -->
+										
+										
+										<div class="control-group">											
+											<label class="control-label" for="firstname">姓名</label>
+											<div class="controls">
+												<input type="text" class="input-medium" id="firstname" value="Rod" />
+											</div> <!-- /controls -->				
+										</div> <!-- /control-group -->
+										
+										
+										<div class="control-group">											
+											<label class="control-label" for="lastname">详细地址</label>
+											<div class="controls">
+												<input type="text" class="input-large" id="address" value="北京市朝阳区惠新里3号楼4单元501" />
+											</div> <!-- /controls -->				
+										</div> <!-- /control-group -->
+										
+										
+										<div class="control-group">											
+											<label class="control-label" for="email">Email 地址</label>
+											<div class="controls">
+												<input type="text" class="input-large" id="email" value="rod.howard@example.com" />
+											</div> <!-- /controls -->				
+										</div> <!-- /control-group -->
+										
+										
+										<br />
+
+											<br />
+										
+											
+										<div class="form-actions">
+											<button type="submit" class="btn btn-primary">Save</button> 
+											<button class="btn">Cancel</button>
+										</div> <!-- /form-actions -->
+									</fieldset>
+								</form>
+								</div>
+								
+								<div class="tab-pane" id="2">
+									<form id="form-wizard" class="form-horizontal" method="post"
+											action="User_updatePassword" />
+										<div id="form-wizard-1" class="step">
+											<div class="control-group">
+												<label class="control-label">原密码</label>
+												<div class="controls">
+													<input id="password" type="password" name="password" />
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label">新密码</label>
+												<div class="controls">
+													<input id="newPassword" type="password" name="newPassword" />
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label">确认密码</label>
+												<div class="controls">
+													<input id="reNewPassword" type="password"
+														name="reNewPassword" />
+												</div>
+											</div>
+
+										</div>
+
+										<div class="form-actions">
+											<input id="back" class="btn btn-primary" type="reset"
+												value="重置" /> <input id="next" class="btn btn-primary"
+												type="submit" value="修改" />
+											<div id="status"></div>
+										</div>
+
+										</form>
+								</div>
+                                
+                                
+                                <div class="tab-pane" id="3">
+									<form id="photoform" class="form-horizontal" enctype="multipart/form-data" />
+                                        
+                                        <div class="control-group">
+
+                                            <label class="control-label">头像上传</label>
+    
+                                            <div class="controls">
+    
+                                            <div class="fileupload fileupload-new" data-provides="fileupload">
+    
+                                                <ul class="thumbnails">
+                                                    <li class="span2">
+                                                        <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                                            <img id="photo" src="" alt="" />
+                                                        </div>
+                                                        <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                                        <div class="actions">
+                                                            <a title="" href="#"><i class="icon-pencil icon-white"></i></a>
+                                                            <a title="" href="#" data-dismiss="fileupload"><i class="icon-remove icon-white"></i></a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+    
+                                                <div class="input-append">  
+                                                   <input type="file" id="file" name="file">
+                                                   <input type="button" value="上传" onclick="return ajaxFileUpload();">
+                                                </div>
+                                            </div>
+                                             <div id="loading" class="progress progress-striped active" style="display:none">
+							<div style="width: 80%;" class="bar"></div>
+						</div>
+                                            </div>
+                                        </div>
+                                    </form>
+								</div>
+								
+							</div>
+						  
+						  
+						</div>
+
+								
+							</div> <!-- /widget-content -->
+							
+						</div> <!-- /widget -->
+						
+					</div> <!-- /span9 -->
+					
+				</div> <!-- /row -->
+				
+
+				
+				
+			</div> <!-- /span9 -->
+			
+			
+		</div> <!-- /row -->
+		
+	</div> <!-- /container -->
+	
+</div> <!-- /content -->
+					
+	
+<div id="footer">
+	
+	<div class="container">				
+		<hr />
+		<p>&copy; 2016.</p>
+	</div> <!-- /container -->
+	
+</div> <!-- /footer -->
+
+
+    
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="./js/jquery-1.7.2.min.js"></script>
+
+
+<script src="./js/bootstrap.js"></script>
+
+  </body>
+</html>

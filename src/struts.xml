@@ -14,14 +14,14 @@
 	<package name="admin" namespace="/admin" extends="struts-default,json-default">
 
 		<interceptors>
-			<!--判断是否登录 和 是否有访问权限 -->
-			<interceptor name="auth" class="com.sea.action.LoginInterceptor" />
+			<!--判断是否登录 和 是否有访问权限 
+			<interceptor name="auth" class="com.sea.action.LoginInterceptor" />-->
 
 			<interceptor name="json"
 				class="org.apache.struts2.json.JSONInterceptor" />
 
 			<interceptor-stack name="myStack">
-				<interceptor-ref name="auth"></interceptor-ref>
+				<!--  <interceptor-ref name="auth"></interceptor-ref>-->
 				<interceptor-ref name="fileUploadStack" />
 				<interceptor-ref name="defaultStack">
 					<!--覆盖defultStack中的exception设置，启用它的日志功能 -->
@@ -63,6 +63,10 @@
 			</result>
 			<result name="exceptionPage">
 				/admin/login.html
+			</result>
+			
+			<result name="userlogin">
+				/web/account.html
 			</result>
 		</action>
 
@@ -133,6 +137,13 @@
 		<action name="index" class="com.sea.action.IndexAction" method="excute">
 			<result name="success">
 				/admin/index.html
+			</result>
+			<interceptor-ref name="myStack"></interceptor-ref>
+		</action>
+		
+		<action name="Notice" class="com.sea.action.NoticeAction" method="excute">
+			<result name="success">
+				/web/faq.html
 			</result>
 			<interceptor-ref name="myStack"></interceptor-ref>
 		</action>

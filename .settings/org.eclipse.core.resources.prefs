@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/com/sea/action/LoginAction.java=UTF-8
+encoding//src/com/sea/action/NoticeAction.java=UTF-8
+encoding//src/com/sea/service/impl/UserServiceImpl.java=UTF-8
 separateDerivedEncodings=true

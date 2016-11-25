@@ -16,7 +16,7 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
+<!-- 
 	<filter>
 		<filter-name>loginFilter</filter-name>
 		<filter-class>com.sea.util.LoginFilter</filter-class>
@@ -25,6 +25,7 @@
 		<filter-name>loginFilter</filter-name>
 		<url-pattern>/admin/*</url-pattern>
 	</filter-mapping>
+	 -->
 	<filter>
 		<filter-name>struts2</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
@@ -34,7 +35,7 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	<welcome-file-list>
-		<welcome-file>admin/login.html</welcome-file>
+		<welcome-file>../admin/login.html</welcome-file>
 	</welcome-file-list>
 	<!--log4j配置文件加载 -->
 	<context-param>

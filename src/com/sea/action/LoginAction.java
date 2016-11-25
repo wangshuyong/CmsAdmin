@@ -34,23 +34,25 @@ public class LoginAction extends BaseAction implements ModelDriven{
 	public String adminLogin(){
 		String phone = userForm.getPhone();
 		String pwd = userForm.getPassword();
-		if(!("".equals(phone)) && phone !=null && !("".equals(pwd)) && pwd !=null) {
-			user = userService.login(phone,pwd);
+		if(("".equals(phone)) || phone==null ||("".equals(pwd)) || pwd ==null) {
+			result="璇疯緭鍏ョ敤鎴峰悕銆佸瘑鐮�";
+			return "fail";//妫�鏌ヨ緭鍏ョ敤鎴峰悕銆佸瘑鐮�
 		} else {
-			result="请输入用户名、密码";
-			return "fail";//检查输入用户名、密码
+			user = userService.login(phone,pwd);
 		}
 
 		if(user==null || "".equals(user)){
-			result="请输入正确的用户名、密码";
-			return "error"; //用户名、密码错误
+			result="璇疯緭鍏ユ纭殑鐢ㄦ埛鍚嶃�佸瘑鐮�";
+			return "error"; //鐢ㄦ埛鍚嶃�佸瘑鐮侀敊璇�
 			//user.equals("")
 		} else if ( user.getPower().equals("1")) {
 			session.put("loginUser",user);
-			return "adminLogin";//管理员登录，进入后台
+			return "adminLogin";//绠＄悊鍛樼櫥褰曪紝杩涘叆鍚庡彴
+		}  else if ( user.getPower().equals("0")) {
+			return "userlogin";
 		} else 
-			result="您没有权限登录，请联系管理员";
-			return "noPower";//普通用户登录 进入前端
+			result="鎮ㄦ病鏈夋潈闄愮櫥褰曪紝璇疯仈绯荤鐞嗗憳";
+			return "noPower";//鏅�氱敤鎴风櫥褰� 杩涘叆鍓嶇
 	}
 	
 	public String login(){
@@ -59,22 +61,22 @@ public class LoginAction extends BaseAction implements ModelDriven{
 		user = userService.login(phone,pwd);
 		
 		if("".equals(phone) || phone ==null ) {
-			dataMap.put("message", "手机号码不能为空");
+			dataMap.put("message", "鎵嬫満鍙风爜涓嶈兘涓虹┖");
 			dataMap.put("flag","fail");
 		} else if (!userService.exists(phone)) {
-			dataMap.put("message", "手机号码不存在");
+			dataMap.put("message", "鎵嬫満鍙风爜涓嶅瓨鍦�");
 			dataMap.put("flag","fail");
 		} else if ("".equals(pwd) || pwd == null){
-			dataMap.put("message", "密码不能为空");
+			dataMap.put("message", "瀵嗙爜涓嶈兘涓虹┖");
 			dataMap.put("flag","fail");
 		} else if(user==null || "".equals(user)){
-			dataMap.put("message", "手机号码与密码不符，请重新输入");
+			dataMap.put("message", "鎵嬫満鍙风爜涓庡瘑鐮佷笉绗︼紝璇烽噸鏂拌緭鍏�");
 			dataMap.put("flag","fail");
 		} else {
 			session.put("loginUser",user);
 			dataMap.put("flag","success");
 			dataMap.put("session", user);
-			dataMap.put("message", "登录成功");
+			dataMap.put("message", "鐧诲綍鎴愬姛");
 		}
 		return "userLogin";	
 			

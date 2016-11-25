@@ -48,7 +48,7 @@ a:hover {
     line-height: 600px;
     overflow: hidden;
     position: relative;
-    top: 24px;
+    top: 6px;
     width: 191px;
 }
 
@@ -147,7 +147,7 @@ a:hover {
     display: block;
     float: left;
     position: relative;
-    width: 220px;
+    width: 110px;
     z-index: 16;
 }
 
@@ -156,7 +156,7 @@ a:hover {
 	margin: 10px 0 0;
 	padding: 0;
 	position: absolute;
-	width: 220px;
+	width: 110px;
 }
 #sidebar > ul > li {
 	display: block;	

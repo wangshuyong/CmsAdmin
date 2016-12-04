@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>添加用户</title>
+		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/bootstrap-responsive.min.css" />
+        <link rel="stylesheet" href="../css/colorpicker.css" />
+        <link rel="stylesheet" href="../css/datepicker.css" />
+		<link rel="stylesheet" href="../css/uniform.css" />
+		<link rel="stylesheet" href="../css/select2.css" />		
+		<link rel="stylesheet" href="../css/unicorn.main.css" />
+		<link rel="stylesheet" href="../css/unicorn.grey.css" class="skin-color" />	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+    CKEDITOR.replace('TextArea1');
+//如果是在ASP.NET环境下用的服务器端控件<TextBox>
+    CKEDITOR.replace('tbContent');
+//如果<TextBox>控件在母版页中，要这样写
+    CKEDITOR.replace('<%=tbContent.ClientID.Replace("_","$") %>');
+</script>
+    </head>
+	<body>
+		
+		
+		<div id="header">
+			<h1><a href="index.html">首頁</a></h1>		
+		</div>
+		
+		<div id="search">
+			<input type="text" placeholder="Search here..." /><button type="submit" class="tip-right" title="Search"><i class="icon-search icon-white"></i></button>
+		</div>
+		<div id="user-nav" class="navbar navbar-inverse">
+            <ul class="nav btn-group">
+                <li class="btn btn-inverse"><a title="我的账号" href="User_profile.html"><i class="icon icon-user"></i> <span class="text">我的账号</span></a></li>
+                <li class="btn btn-inverse"><a title="" href="Login_logOut"><i class="icon icon-share-alt"></i> <span class="text">退出</span></a></li>
+            </ul>
+        </div>
+            
+		<div id="sidebar">
+			
+			<ul>
+				<li><a href="index.html"><i class="icon icon-home"></i> <span>首页</span></a></li>
+				<li class="submenu">
+					<a href="#"><i class="icon icon-user"></i> <span>用户管理</span></a>
+					<ul>
+						<li><a href="User_add.html">添加用户</a></li>
+                        <li><a href="User_list.html">用户列表</a></li>
+					</ul>
+				</li>
+				<!--
+                <li class="submenu">
+                	<a href="buttons.html"><i class="icon icon-tint"></i> <span>Logo管理</span> <span class="label">2</span></a>
+                    <ul>
+						<li><a href="Logo_manage.html">添加Logo</a></li>
+                        <li><a href="User_list.html">用户列表</a></li>
+					</ul>
+                </li> -->
+				<li class="submenu active open">
+					<a href="#"><i class="icon icon-volume-up"></i> <span>通知管理</span> </a>
+					<ul>
+						<li class="active"><a href="Notice_add.html">发布通知</a></li>
+                        <li><a href="Notice_list.html">通知列表</a></li>
+					</ul>
+				</li>
+                
+                <li class="submenu">
+					<a href="#"><i class="icon icon-pencil"></i> <span>日志管理</span> </a>
+					<ul>
+						<li><a href="adminlog_list.html">管理员日志</a></li>
+					</ul>
+				</li>
+			</ul>
+		
+		</div>
+
+		
+		<div id="content">
+			<div id="content-header">
+				<h1>添加用户</h1>
+				
+			</div>
+			<div id="breadcrumb">
+				<a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> 首頁</a>
+				<a href="#" class="tip-bottom">用户管理</a>
+				<a href="#" class="current">添加用户</a>
+			</div>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="icon-align-justify"></i>									
+								</span>
+								<h5>添加用户</h5>
+							</div>
+							<div class="widget-content nopadding">
+								<form action="Notice_add" method="post" class="form-horizontal" />
+									<div class="control-group">
+										<label class="control-label">通知标题</label>
+										<div class="controls">
+											<input type="text" name="user.phone" placeholder="输入11位手机号..."/>
+										</div>
+									</div>
+                                    <div class="control-group">
+										<label class="control-label">通知内容</label>
+										<div class="controls">
+											<textarea id="TextArea1" cols="20" rows="20" class="ckeditor"></textarea>
+										</div>
+									</div>
+
+									<div class="form-actions">
+										<button type="submit" class="btn btn-primary">发布</button>
+									</div>
+								</form>
+							</div>
+						</div>						
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<div id="footer" class="span12">
+						2015 &copy; <a href="https://"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+             <script src="../js/jquery.min.js"></script>
+             <script src="../js/jquery.ui.custom.js"></script>
+             <script src="../js/bootstrap.min.js"></script>
+             <script src="../js/bootstrap-colorpicker.js"></script>
+             <script src="../js/bootstrap-datepicker.js"></script>
+             <script src="../js/jquery.uniform.js"></script>
+             <script src="../js/select2.min.js"></script>
+             <script src="../js/unicorn.js"></script>
+             <script src="../js/unicorn.form_common.js"></script>
+             <script src="../ckeditor/ckeditor.js"></script>
+    		 <script src="../ckeditor/adapters/jquery.js"></script>
+	</body>
+</html>

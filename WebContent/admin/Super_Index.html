@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- container-fluid -->
+	<head>
+		<title>管理后台</title>
+		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../css/bootstrap.min3.3.7.css" />
+		<link rel="stylesheet" href="../css/bootstrap-responsive.min2.3.css" />
+		<link rel="stylesheet" href="../css/dataTables.fontAwesome.css">
+		<link rel="stylesheet" href="../css/select2.css" />		
+		<link rel="stylesheet" href="../css/fullcalendar.css" />	
+		<link rel="stylesheet" href="../css/unicorn.main.css" />
+		<link rel="stylesheet" href="../css/unicorn.grey.css" class="skin-color" />
+        
+        
+    
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+	<body>
+		
+		<div id="header">
+			<h1 ><a href="Super_Index.html" ></a></h1>		
+            
+		</div>
+		
+		<div id="search">
+			<input type="text" placeholder="查找..." /><button type="submit" class="tip-right" title="Search"><span class="glyphicon-search icon-white"></span></button>
+		</div>
+		<div id="user-nav" class="navbar navbar-inverse">
+            <ul class="nav btn-group">
+                <li class="btn btn-default  btn-inverse"><a title="修改密码" href="Super_admin_password.html"><span class="glyphicon glyphicon-user"></span> <span class="text">修改密码</span></a></li>
+                
+                <li class="btn btn-inverse"><a title="" href="Login_logOut"><span class="glyphicon glyphicon-share-alt"></span> <span class="text">退出</span></a></li>
+            </ul>
+        </div>
+            
+		<div id="sidebar">
+			<a href="#" class="visible-phone"><span class="glyphicon glyphicon-home"></span> 首页</a>
+			<ul>
+				<li class="active"><a href="Super_Index.html"><span class="glyphicon glyphicon-home"></i> <span>首页</span></a></li>
+				<li class="submenu">
+					<a href="#"><span class="glyphicon glyphicon-user"></span> <span>用户管理</span> </a>
+					<ul>
+                        <li class="active"><a href="Super_User_list.html">用户列表</a></li>
+					</ul>
+				</li>
+                <li class="submenu">
+					<a href="#"><span class="glyphicon glyphicon-road"></span> <span>小区管理</span> </a>
+					<ul>
+						<li><a href="Area_add.html">添加小区</a></li>
+                        <li class="active"><a href="Area_list.html">小区列表</a></li>
+					</ul>
+				</li>
+				<!--
+                <li class="submenu">
+                	<a href="buttons.html"><i class="icon icon-tint"></i> <span>Logo管理</span> <span class="label">2</span></a>
+                    <ul>
+						<li><a href="Logo_manage.html">添加Logo</a></li>
+                        <li><a href="User_list.html">用户列表</a></li>
+					</ul>
+                </li> -->
+				<li>
+					<a href="Super_Notice_list.html"><span class="glyphicon glyphicon-volume-up"></i> <span>公告通知</span> </a>
+				</li>
+                
+                 <li>
+					<a href="Super_Adminlog_list.html"><span class="glyphicon glyphicon-pencil"></span> <span>日志管理</span> </a>
+					
+				</li>
+			</ul>
+		
+		</div>
+		
+		<div id="content">
+			<div id="content-header">
+				<h1>首页</h1>
+				
+			</div>
+			<div id="breadcrumb">
+				<a href="#" title="Go to Home" class="tip-bottom"><span class="icon-home"></span> Home</a>
+				<a href="#" class="current">首页</a>
+			</div>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span12 center" style="text-align: center;">					
+						<ul class="stat-boxes">
+							<li>
+								<div class="left peity_bar_good"><span>2,4,9,7,12,10,12</span>+20%</div>
+								<div class="right">
+									<strong>36094</strong>
+									Visits
+								</div>
+							</li>
+							<li>
+								<div class="left peity_bar_neutral"><span>20,15,18,14,10,9,9,9</span>0%</div>
+								<div class="right">
+									<strong>1433</strong>
+									Users
+								</div>
+							</li>
+							<li>
+								<div class="left peity_bar_bad"><span>3,5,9,7,12,20,10</span>-50%</div>
+								<div class="right">
+									<strong>8650</strong>
+									Orders
+								</div>
+							</li>
+							<li>
+								<div class="left peity_line_good"><span>12,6,9,23,14,10,17</span>+70%</div>
+								<div class="right">
+									<strong>8650</strong>
+									Orders
+								</div>
+							</li>
+						</ul>
+					</div>	
+				</div>
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="alert alert-info">
+							欢迎使用 <strong>物业管理一站平台</strong>. 在这里您将体验便利的工作方式!
+							<a href="#" data-dismiss="alert" class="close">×</a>
+						</div>
+						<div class="widget-box">
+							<div class="widget-title"><span class="icon"><i class="icon-signal"></i></span><h5>Site Statistics</h5><div class="buttons"><a href="#" class="btn btn-mini"><i class="icon-refresh"></i> Update stats</a></div></div>
+							<div class="widget-content">
+								<div class="row-fluid">
+								<div class="span4">
+									<ul class="site-stats">
+										<li><span class="icon-user"></span> <strong>1433</strong> <small>Total Users</small></li>
+										<li><span class="icon-arrow-right"></span> <strong>16</strong> <small>New Users (last week)</small></li>
+										<li class="divider"></li>
+										<li><span class="icon-shopping-cart"></span> <strong>259</strong> <small>Total Shop Items</small></li>
+										<li><span class="icon-tag"></span> <strong>8650</strong> <small>Total Orders</small></li>
+										<li><span class="icon-repeat"></span> <strong>29</strong> <small>Pending Orders</small></li>
+									</ul>
+								</div>
+								<div class="span8">
+									<div class="chart"></div>
+								</div>	
+								</div>							
+							</div>
+						</div>					
+					</div>
+				</div>
+				
+				<div class="row-fluid">
+					<div id="footer" class="span12">
+						2016 &copy;
+					</div>
+				</div>
+			</div>
+		</div>
+		 
+		 <script type="text/javascript" src="../js/excanvas.min.js"></script>
+         <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+         <script type="text/javascript" src="../js/jquery-migrate-1.2.1.min.js"></script>
+         <script type="text/javascript" src="../js/jquery.ui.custom.js"></script>
+         <script type="text/javascript" src="../js/bootstrap.3.3.7.min.js"></script> 
+         <script type="text/javascript" src="../js/jquery.flot.min.js"></script>
+         <script type="text/javascript" src="../js/jquery.flot.resize.min.js"></script>
+         <script type="text/javascript" type="text/javascript" src="../js/jquery.peity.min.js"></script>
+         <script type="text/javascript" src="../js/fullcalendar.min.js"></script>
+         <script type="text/javascript" src="../js/unicorn.js"></script>
+         <script type="text/javascript" src="../js/unicorn.dashboard.js"></script>
+	</body>
+</html>

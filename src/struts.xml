@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.ui.templateDir" value="template" />
+	<constant name="struts.ui.templateSuffix" value="ftl" />
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.devMode" value="true" />
+
+	<package name="admin" namespace="/admin" extends="struts-default,json-default">
+	
+		<interceptors>
+			<!--判断是否登录 和 是否有访问权限 -->
+			<interceptor name="auth" class="com.sea.action.LoginInterceptor" />
+
+			<interceptor name="json"
+				class="org.apache.struts2.json.JSONInterceptor" />
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="auth"></interceptor-ref>
+				<interceptor-ref name="fileUploadStack" />
+				<interceptor-ref name="defaultStack">
+					<!--覆盖defultStack中的exception设置，启用它的日志功能 -->
+					<param name="exception.logEnabled">true</param>
+					<param name="exception.logLevel">error</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-action-ref name="index" />
+
+		<!-- 全局结果 -->
+		<global-results>
+			<!-- 拦截没登录返回结果 -->
+			<result name="noLogin" type="redirect">/admin/login.html</result>
+			<!-- 拦截没有权限返回结果 -->
+			<result name="noPower" type="redirect">/admin/login.html</result>
+			<result name="exceptionPage" type="dispatcher">
+				<param name="location">/admin/login.html</param>
+			</result>
+			<result name="timeOut" type="redirect">
+				/admin/login.html
+			</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping exception="org.hi.framework.web.BusinessException"
+				result="exceptionPage" />
+			<exception-mapping exception="org.acegisecurity.AccessDeniedException"
+				result="exceptionPage" />
+			<exception-mapping result="exceptionPage"
+				exception="java.lang.Exception" />
+		</global-exception-mappings>
+
+		
+		
+		<action name="Login_*" class="com.sea.action.LoginAction"
+			method="{1}">
+			<result name="areaAdmin" type="chain">Index_areaAdmin</result>
+			<result name="administrator" type="chain">Index_administrator</result>
+			<result name="userlogin" type="chain">Index_user</result>
+			<result name="noPower">
+				/admin/login.html
+			</result>
+			<result name="fail">
+				/admin/loginError.html
+			</result>
+			<result name="noPower" type="redirect">
+				/admin/login.html
+			</result>
+			<result name="logout" type="redirect">
+				/admin/login.html
+			</result>
+			<result name="exceptionPage">
+				/admin/login.html
+			</result>
+			<result name="homeadmin">
+				/web/homeaccount.html
+			</result>
+		</action>
+
+		<action name="Index_*" class="com.sea.action.IndexAction"
+			method="{1}">
+			<result name="areaAdmin">
+				/admin/index.html
+			</result>
+			<result name="administrator">
+				/admin/Super_Index.html
+			</result>
+			<result name="userlogin">
+				/admin/User_Notice.html
+			</result>
+			<result name="timeOut">
+				/admin/login.html
+			</result>
+			<interceptor-ref name="myStack"></interceptor-ref>
+		</action>
+
+		<action name="userImport" class="com.sea.action.UserImportAction"
+			method="fileUpload">
+			<result type="json" name="upload">
+				<param name="contentType">
+					text/html
+				</param>
+			</result>
+			<result type="json" name="error">
+				<param name="contentType">
+					text/html
+				</param>
+			</result>
+			<result name="timeOut">
+				/admin/login.html
+			</result>
+			<interceptor-ref name="myStack"></interceptor-ref>
+		</action>
+
+		<action name="fileUpload_*" class="com.sea.action.FileAction"
+			method="{1}">
+			<result type="json" name="upload">
+				<param name="contentType">
+					text/html
+				</param>
+			</result>
+
+			<result type="json" name="error">
+				<param name="contentType">
+					text/html
+				</param>
+			</result>
+			<interceptor-ref name="myStack"></interceptor-ref>
+		</action>
+
+		<action name="fileDown" class="com.sea.action.FileDownLoadAction">
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="contentDisposition">attachment;fileName="${downloadChineseFileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+			<result name="timeOut">
+				/admin/login.html
+			</result>
+			<interceptor-ref name="myStack"></interceptor-ref>
+		</action>
+
+		<action name="*_*" class="com.sea.action.{1}Action" method="{2}">
+			<result name="profile" type="json">
+				<param name="root">user</param>
+			</result>
+			<result name="profileOK" type="json">
+				<param name="root">returnMessage</param>
+			</result>
+
+			<result name="list" type="json">
+				<param name="root">returnMessage</param>
+				<param name="excludeProperties">areaUser</param>
+			</result>
+			<result name="delete">
+				/admin/User_list.html
+			</result>
+			<result name="exportOk" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="contentDisposition">attachment;filename="${fileName}.xls"</param>
+				<param name="inputName">excelStream</param>
+				<param name="bufferSize">1024</param>
+			</result>
+			<result name="edit" type="json">
+				<param name="root">user</param>
+			</result>
+			<result type="json" name="userOk">
+				<param name="root">returnMessage</param>
+			</result>
+
+			<!-- administrator -->
+			<result name="adminList" type="json">
+				<param name="root">returnMessage</param>
+				<param name="excludeProperties">areaUser</param>
+			</result>
+			<result name="adminUserList" type="json">
+				<param name="root">returnMessage</param>
+				<param name="excludeProperties">areaUser</param>
+			</result>
+
+			<result type="json" name="adminAdd">
+				<param name="root">returnMessage</param>
+			</result>
+
+			<!-- notice -->
+			<result name="addnotice" type="redirect">
+				/admin/Notice_list.html
+			</result>
+			<result name="notice" type="json">
+				<param name="root">notice</param>
+			</result>
+			<result name="noticeList" type="json">
+				<param name="root">returnMessage</param>
+			</result>
+			<result name="noticeListToUser" type="json">
+				<param name="root">returnMessage</param>
+			</result>
+			<result name="noticeUpdate" type="redirect">
+				/admin/Notice_list.html
+			</result>
+
+			<!-- log -->
+			<result name="logList" type="json">
+				<param name="root">returnMessage</param>
+			</result>
+			<result name="timeOut">
+				/admin/login.html
+			</result>
+
+			<!-- area manage -->
+			<result name="addArea" type="redirect">
+				/admin/Area_list.html
+			</result>
+			<result name="editArea" type="json">
+				<param name="root">area</param>
+			</result>
+			<result name="ListArea" type="json">
+				<param name="root">returnMessage</param>
+			</result>
+			<result name="updateArea" type="redirect">
+				/admin/Area_list.html
+			</result>
+			<result name="areaexist">
+				/admin/Area_add.html
+			</result>
+			<interceptor-ref name="myStack"></interceptor-ref>
+		</action>
+
+
+	</package>
+
+</struts>

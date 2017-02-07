@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>我的主页</title>
+    <meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="../css/font-awesome.css" rel="stylesheet" />
+    <link href="../css/pages/plans.css" rel="stylesheet" /> 
+    <link rel="stylesheet" href="../css/uniform.css" />
+    <link rel="stylesheet" href="../css/unicorn.grey.css" class="skin-color" />
+    <link rel="stylesheet" href="../css/bootstrap-fileupload.css"/>
+    <link href="../css/font-awesome.css" rel="stylesheet" />
+    <link href="../css/adminia.css" rel="stylesheet" /> 
+    <link href="../css/adminia-responsive.css" rel="stylesheet" /> 
+    <link href="../css/pages/faq.css" rel="stylesheet" /> 
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	<link href="../css/jquery.fancybox.css" rel="stylesheet" />
+	<link href="../css/chosen.css" rel="stylesheet" type="text/css"/>
+    
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+
+<body>
+	
+<div class="navbar navbar-fixed-top">
+	
+	<div class="navbar-inner">
+		
+		<div class="container">
+			
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
+				<span class="icon-bar"></span> 
+				<span class="icon-bar"></span> 
+				<span class="icon-bar"></span> 				
+			</a>
+			
+			<a class="brand" href="./">我的主页</a>
+			
+			<div class="nav-collapse">
+            
+				<ul class="nav pull-right">
+					<li>
+						<a href="User_Notice.html"><span class="badge badge-warning" id="newNotice" title="新通知"></span></a>
+					</li>
+					
+					<li class="divider-vertical"></li>
+					
+					<li class="dropdown">
+						
+                        <a href="Login_logout"><i class="icon-off"></i> 退出</a>
+					</li>
+				</ul>
+				
+			</div> <!-- /nav-collapse -->
+			
+		</div> <!-- /container -->
+		
+	</div> <!-- /navbar-inner -->
+	
+</div> <!-- /navbar -->
+
+
+
+
+<div id="content">
+	
+	<div class="container">
+		
+		<div class="row">
+			
+			<div class="span3">
+				
+				<div class="account-container">
+                    <div class="item">
+                        <a id="myphotoHref" class="fancybox-button" data-rel="fancybox-button" href="">
+                        <div class="account-avatar">
+                            <img id="photo" src="" alt="" class="thumbnail"  title="点击放大"/>
+                            
+                        </div> <!-- /account-avatar -->
+                    	</a>
+                        
+                    </div>
+
+					<div class="account-details">
+					
+						<span class="account-name" id="user"></span>
+						
+						<span class="account-role">业主，你好</span>
+					
+					</div> <!-- /account-details -->
+				
+				</div> <!-- /account-container -->
+                
+				<hr />
+				
+				<ul id="main-nav" class="nav nav-tabs nav-stacked">
+										
+					<li class="active">
+						<a href="account.html">
+							<i class="icon-user"></i>
+							我的资料							
+						</a>
+					</li>
+                    
+					<li>
+						<a href="User_Notice.html">
+							<i class="icon-volume-up"></i>
+							广播通知
+						</a>
+					</li>
+					
+				</ul>				
+				
+				<hr />
+		
+			</div> <!-- /span3 -->
+			
+			
+			
+			<div class="span9">
+				
+				<h1 class="page-title">
+					<i class="icon-th-large"></i>
+					我的资料				
+				</h1>
+				
+				
+				<div class="row">
+					
+					<div class="span9">
+				
+						<div class="widget">
+							
+							<div class="widget-header">
+								<h3>个人信息</h3>
+							</div> <!-- /widget-header -->
+									
+							<div class="widget-content">
+
+								<div class="tabbable">
+                                <ul class="nav nav-tabs">
+                                  <li class="active">
+                                    <a href="#1" data-toggle="tab">个人信息</a>
+                                  </li>
+                                  <li><a href="#2" data-toggle="tab">修改密码</a></li>
+                                  <li><a href="#3" data-toggle="tab">证件图片</a></li>
+                                  <li><a href="#4" data-toggle="tab">上传头像</a></li>
+                                </ul>
+                                <br/>
+						
+							  <div class="tab-content">
+								<div class="tab-pane active" id="1">
+								<form id="edit-profile"  class="form-horizontal" />
+									<fieldset>
+										
+										<div class="control-group">											
+											<label class="control-label" for="username">手机号</label>
+											<div class="controls">
+                                            	<input type="hidden" id="userId" name="user.id" placeholder="用户id"/>	
+												<input id="phone" type="text" class="input-medium disabled" name="user.phone" vplaceholder="您的手机号..." />
+												<p class="help-block">手机号为登录账户，请谨慎修改，以免影响您的登录</p>
+											</div> <!-- /controls -->				
+										</div> <!-- /control-group -->
+										
+										
+										<div class="control-group">											
+											<label class="control-label" for="firstname">姓名</label>
+											<div class="controls">
+												<input id="realName" type="text" class="input-medium" name="user.realName" placeholder="您的姓名..." />
+											</div> <!-- /controls -->				
+										</div> <!-- /control-group -->
+										
+										<div class="control-group">
+											<label class="control-label">性别</label>
+											<div class="controls">
+												<select id="sex" name="user.sex">
+                                                	<option id="kong" value="空"/>
+                                                    <option id="man" value="男"/>男
+                                                    <option id="woman" value="女" />女
+                                                </select>
+											</div>
+										</div>
+                                        
+                                        <div class="control-group">
+                                            <label class="control-label">年龄</label>
+                                            <div class="controls">
+                                                <input type="text" name="user.age" placeholder="您的年龄..."/>
+                                            </div>
+                                        </div>
+
+										<div class="control-group">
+											<label class="control-label">邮箱</label>
+											<div class="controls">
+												<input id="email" type="text" name="user.email"
+													placeholder="您的email地址..." />
+												<!--<span class="help-block">This is a description</span>-->
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">地址</label>
+											<div class="controls">
+												<input id="address" type="text" name="user.address"
+													placeholder="您的居住地址..." />
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">籍贯</label>
+											<div class="controls">
+												<input id="nativePlace" type="text" name="user.nativePlace"
+													placeholder="您的籍贯..." />
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">车牌号</label>
+                                            <div class="controls">
+                                                <input type="text" name="user.carID" placeholder="您的车牌号..." />
+                                            </div>
+										</div>
+										<div class="control-group">
+										<label class="control-label">爱好</label>
+										<div class="controls">
+											<textarea id="hobby" name="user.hobby"></textarea>
+										</div>
+									</div> 
+
+										<div class="form-actions">
+											<button type="submit" class="btn btn-primary">Save</button> 
+											<button class="btn">Cancel</button>
+										</div> <!-- /form-actions -->
+									</fieldset>
+								</form>
+								</div>
+								
+								<div class="tab-pane" id="2">
+									<form id="form-wizard" class="form-horizontal" />
+										<div id="form-wizard-1" class="step">
+											<div class="control-group">
+												<label class="control-label">原密码</label>
+												<div class="controls">
+													<input id="password" type="password" name="userForm.password" />
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label">新密码</label>
+												<div class="controls">
+													<input id="newPassword" type="password" name="userForm.newPassword" />
+												</div>
+											</div>
+											<div class="control-group">
+												<label class="control-label">确认密码</label>
+												<div class="controls">
+													<input id="reNewPassword" type="password"
+														name="userForm.reNewPassword" />
+												</div>
+											</div>
+										</div>
+
+										<div class="form-actions">
+											<input id="next" class="btn btn-primary"
+												type="submit" value="修改" /> <input id="back" class="btn btn-primary" type="reset" value="重置" /> 
+											<div id="status"></div>
+										</div>
+
+										</form>
+								</div>
+
+                                <div class="tab-pane" id="3">
+									<form id="photoform" class="form-horizontal" enctype="multipart/form-data" />
+                                        <div class="control-group">
+                                            <label class="control-label">证件上传</label>
+                                            <div class="controls">
+                                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                    <ul class="thumbnails">
+                                                        <li class="span2">
+                                                            <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                                                
+                                                                <div class="item">
+                                                                    <a id="IDphotoHref" class="fancybox-button" data-rel="fancybox-button" title="点击查看大图" href="">
+                                                                        <div class="zoom">
+                                                                            <img id="IDphoto" src="" alt="" />                    
+                                                                            <div class="zoom-icon"></div>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                                            
+                                                        </li>
+                                                    </ul>
+        
+                                                    <div class="input-append">  
+                                                       <input type="file" id="file" name="file">
+                                                       <Button type="submit" class="btn btn-primary" onclick="return ajaxFileUpload();">上传</Button>
+                                                    </div>
+                                                </div>
+                                                 <div id="loading" class="progress progress-striped active" style="display:none">
+                                                    <div style="width: 80%;" class="bar"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+								</div>
+                                
+								<div class="tab-pane" id="4">
+									<form id="photoform" class="form-horizontal" enctype="multipart/form-data" />
+                                        <div class="control-group">
+                                            <label class="control-label">上传头像</label>
+                                            <div class="controls">
+                                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                    <ul class="thumbnails">
+                                                        <li class="span2">
+                                                            <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                                                
+                                                                <div class="item">
+                                                                    <a id="myphotoHref" class="fancybox-button" data-rel="fancybox-button" href="">
+                                                                        <div class="zoom">
+                                                                            <img id="myphoto" src="" alt="" />                    
+                                                                            <div class="zoom-icon"></div>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                                            
+                                                        </li>
+                                                    </ul>
+        
+                                                    <div class="input-append">  
+                                                       <input type="file" id="tfile" name="file">
+                                                       <Button type="submit" class="btn btn-primary" onclick="return ajaxPhotoUpload();">上传</Button>
+                                                    </div>
+                                                </div>
+                                                 <div id="tloading" class="progress progress-striped active" style="display:none">
+                                                    <div style="width: 80%;" class="bar"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+								</div>
+							</div>
+						  
+						  
+						</div>
+
+								
+							</div> <!-- /widget-content -->
+							
+						</div> <!-- /widget -->
+						
+					</div> <!-- /span9 -->
+					
+				</div> <!-- /row -->
+				
+
+			</div> <!-- /span9 -->
+			
+			
+		</div> <!-- /row -->
+		
+	</div> <!-- /container -->
+	
+</div> <!-- /content -->
+					
+	
+<div id="footer">
+	
+	<div class="container">				
+		<hr />
+		<p>&copy; 2016.</p>
+	</div> <!-- /container -->
+	
+</div> <!-- /footer -->
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+	<script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <script src="../js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/ajaxfileupload.js"></script>
+    <script src="../js/jquery.uniform.js"></script>
+	 <script src="../js/select2.min.js"></script>
+     <script src="../js/unicorn.js"></script>
+     <script src="../js/jquery.validate.js"></script>
+     <script src="../js/jquery.uniform.js"></script>
+     <script src="../js/jquery.form.js"></script>
+     <script src="../js/jquery.fancybox.pack.js"></script>   
+	 <script src="../js/app.js"></script>   
+     <script src="../js/gallery.js"></script> 
+
+<script>
+$(document).ready(function(){ 
+	App.init();
+	Gallery.init();
+	
+	$(function(){ 
+	$.ajax({
+			type: "post",
+			url: "admin/Notice_listToUser",
+			cache : false,	//禁用缓存
+			dataType: "json",
+			success: function(result) {
+				var member = eval("("+result+")");
+				$("#newNotice").append(member.total);
+			},
+		   	error:function(){
+					alert("登录超时，请重新登录！");
+				}
+		});
+		$.ajax({ 
+			url:"admin/User_profile", 
+			type:"post", 
+			dataType:"json", 
+			 success:function(data){
+				$("#userId").val(data.id);
+				$("#phone").val(data.phone);
+				$("#realName").val(data.realName);
+				$("#age").val(data.age);
+				$("#sex").val(data.sex);
+				$("#email").val(data.email);
+				$("#address").val(data.address);
+				$("#nativePlace").val(data.nativePlace);
+				$("#hobby").val(data.hobby);
+				if(data.idPhoto !=='' || null !==data.idPhoto){
+					$("#IDphoto").attr("src",'..'+data.idPhoto);
+					$("#IDphotoHref").attr("href",'..'+data.idPhoto);
+				}
+				
+				$("#user").append(data.realName);
+				if(data.photo=='' || null==data.photo){
+					$("#photo").attr("src","../img/photo.jpg");
+				}else {
+					$("#photo").attr("src",'..'+data.photo);
+				};
+
+				if(data.photo=='' || null==data.photo){
+						$("#myphoto").attr("src","../img/photo.jpg");
+						$("#myphotoHref").attr("href","../img/photo.jpg");
+					}else { 
+						$("#myphoto").attr("src",'..'+data.photo);
+						$("#myphotoHref").attr("href",'..'+data.photo);
+					}
+			},
+			error:function(){
+				alert("登录超时，请重新登录！");
+			}
+		}); 
+		
+		
+	});
+
+});
+  
+$("#chgPhoto").on('click', function(e) {
+    e.preventDefault();
+    $("#photoUpload").closest('input[type=file]').trigger('click');
+})
+function GetRequest() {  
+    //url例子：XXX.aspx?ID=" + ID + "&Name=" + Name；  
+    var url = location.search; //获取url中"?"符以及其后的字串  
+    var theRequest = new Object();  
+    if(url.indexOf("?") != -1)//url中存在问号，也就说有参数。  
+    {   
+      var str = url.substr(1);  
+        strs = str.split("&");  
+      for(var i = 0; i < strs.length; i ++)  
+        {   
+         theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);  
+        }  
+    }  
+    return theRequest;  
+}  ;
+
+ function ajaxFileUpload() { 
+	var id =$("#userId").val();
+	$("#loading")
+		.ajaxStart(function(){
+			$(this).show();
+		})//开始上传文件时显示一个图片
+		.ajaxComplete(function(){
+			$(this).hide();
+		});//文件上传完成将图片隐藏起来
+		
+		$.ajaxFileUpload
+		({
+			url:'../admin/fileUpload_photoUpload',//用于文件上传的服务器端请求地址
+			secureuri:false,//一般设置为false
+			data:{"userId":id,"uploadType":"USER_IDPhoto_PATH"},
+			fileElementId:'file',//文件上传空间的id属性  <input type="file" id="file" name="file" />
+			dataType: 'json',//返回值类型 一般设置为json
+			success: function (data, status)  //服务器成功响应处理函数
+			{
+				//从服务器返回的json中取出message中的数据,其中message为在struts2中定义的成员变量
+				alert(data.message);
+				if(data.fileFileName!== null){
+					$("#IDphoto").attr("src", "../upload/image/ID_IMAGE/"+data.fileFileName); 
+				}	
+			},
+			error: function (data, status, e)//服务器响应失败处理函数
+			{
+				alert(data);
+				alert(e);
+			}
+		})
+		return false;
+};
+function ajaxPhotoUpload() { 
+	var id =$("#userId").val();
+	$("#tloading")
+		.ajaxStart(function(){
+			$(this).show();
+		})//开始上传文件时显示一个图片
+		.ajaxComplete(function(){
+			$(this).hide();
+		});//文件上传完成将图片隐藏起来
+		
+		$.ajaxFileUpload
+		({
+			url:'../admin/fileUpload_photoUpload',//用于文件上传的服务器端请求地址
+			secureuri:false,//一般设置为false
+			data:{"userId":id,"uploadType":"USER_PHOTO_PATH"},
+			fileElementId:'tfile',//文件上传空间的id属性  <input type="file" id="file" name="file" />
+			dataType: 'json',//返回值类型 一般设置为json
+			success: function (data, status)  //服务器成功响应处理函数
+			{
+				//从服务器返回的json中取出message中的数据,其中message为在struts2中定义的成员变量
+				alert(data.message);
+  				if(data.fileFileName!==null){
+					$("#myphoto").attr("src", "../upload/image/USER_IMAGE/"+data.fileFileName); 
+				$("#photo").attr("src", "../upload/image/USER_IMAGE/"+data.fileFileName); 
+				}	
+			},
+			error: function (data, status, e)//服务器响应失败处理函数
+			{
+				alert(data);
+				alert(e);
+			}
+		})
+		return false;
+};
+
+// Form Validation
+$("#edit-profile").validate({
+		rules:{
+			"user.phone":{
+				required:true,
+				number:true,
+				minlength:11,
+				maxlength:15
+			},
+			
+			"user.email":{
+				email: true
+			},
+			"user.age":{
+				number: true
+			}
+		},
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass) {
+			$(element).parents('.control-group').addClass('error');
+		},
+		unhighlight: function(element, errorClass, validClass) {
+			$(element).parents('.control-group').removeClass('error');
+			$(element).parents('.control-group').addClass('success');
+		},
+		 submitHandler: function(form) {
+			$("#edit-profile").ajaxSubmit({
+				url: 'admin/User_updateProfile',
+				type: 'post',
+				dataType: 'text',
+				data: $("#useradd").serialize(),
+				success: function (data) {
+					alert(data);
+				}
+			});
+			return false;
+		 }
+	});
+	$("#form-wizard").validate({
+		rules:{
+			"userForm.password":{
+				required:true
+			},
+			"userForm.newPassword":{
+				required:true,
+				minlength:6,
+				maxlength:20
+			},
+			"userForm.reNewPassword":{
+				required:true,
+				minlength:6,
+				maxlength:20,
+				equalTo:"#newPassword"
+			}
+		},
+		errorClass: "help-inline",
+		errorElement: "span",
+		highlight:function(element, errorClass, validClass) {
+			$(element).parents('.control-group').addClass('error');
+		},
+		unhighlight: function(element, errorClass, validClass) {
+			$(element).parents('.control-group').removeClass('error');
+			$(element).parents('.control-group').addClass('success');
+		},
+		 submitHandler: function(form) {
+			$("#form-wizard").ajaxSubmit({
+				url: 'admin/User_updatePassword',
+				type: 'post',
+				dataType: 'text',
+				data: $("#adminform").serialize(),
+				success: function (data) {
+					alert(data);
+				}
+			});
+			return false;
+		 }
+	});
+</script>
+
+  </body>
+</html>

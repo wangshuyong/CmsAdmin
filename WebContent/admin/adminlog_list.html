@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<title>用户列表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/bootstrap.min3.3.7.css" />
+	<link rel="stylesheet" href="../css/bootstrap-responsive.min2.3.css" />
+    <link rel="stylesheet" href="../css/dataTables.fontAwesome.css">
+	<link rel="stylesheet" href="../css/select2.css" />		
+	<link rel="stylesheet" href="../css/unicorn.main.css" />
+	<link rel="stylesheet" href="../css/unicorn.grey.css" class="skin-color" />	 
+    <link rel="stylesheet" type="text/css" media="all" href="../css/daterangepicker-bs3.css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	 <script>
+	 
+     </script>
+     <style>
+	  #feedback { font-size: 1.4em; }
+	  #selectable .ui-selecting { background: #FECA40; }
+	  #selectable .ui-selected { background: #F39814; color: white; }
+	  #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+	  #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+    </style>
+    <style>
+	#importFile{ opacity:0;/*设置此控件透明度为零，即完全透明*/
+		 filter:alpha(opacity=0);/*设置此控件透明度为零，即完全透明针对IE*/
+		 font-size:100px;
+		 position:absolute;/*绝对定位，相对于 .input */
+		 top:0;
+		 right:0;}
+	</style>
+	</head>
+	<body>
+		<div id="header">
+			<h1><a href="index.html">后台管理</a></h1>		
+		</div>
+		
+		<div id="search">
+			<input type="text" placeholder="Search here..." /><button type="submit" class="tip-right" title="Search"><i class="glyphicon-search glyphicon-white"></i></button>
+		</div>
+		<div id="user-nav" class="navbar navbar-inverse">
+            <ul class="nav btn-group">
+                <li class="btn btn-inverse"><a title="我的账号" href="User_profile.html"><span class="glyphicon glyphicon-user"></span> <span class="text">我的账号</span></a></li>
+                <li class="btn btn-inverse"><a title="" href="Login_logOut"><span class="glyphicon glyphicon-share-alt"></span> <span class="text">退出</span></a></li>
+            </ul>
+        </div>
+            
+		<div id="sidebar">
+			<a href="#" class="visible-phone"><span class="glyphicon glyphicon-th-list"></span> Tables</a>
+			<ul>
+				<li><a href="index.html"><span class="glyphicon glyphicon-home"></span> <span>首页</span></a></li>
+				<li class="submenu">
+					<a href="User_list.html"><span class="glyphicon glyphicon-user"></span> <span>用户管理</span> </a>
+					<ul>
+						<li><a href="User_add.html">添加用户</a></li>
+                        <li class="active"><a href="User_list.html">用户列表</a></li>
+					</ul>
+				</li>
+				<!--
+                <li class="submenu">
+                	<a href="buttons.html"><i class="icon icon-tint"></i> <span>Logo管理</span> <span class="label">2</span></a>
+                    <ul>
+						<li><a href="Logo_manage.html">添加Logo</a></li>
+                        <li><a href="User_list.html">用户列表</a></li>
+					</ul>
+                </li> -->
+				<li class="submenu">
+					<a href="Notice_list.html"><span class="glyphicon glyphicon-volume-up"></span> <span>公告通知</span> </a>
+					<ul>
+						<li><a href="Notice_add.html">发布通知</a></li>
+                        <li class="active"><a href="Notice_list.html">通知列表</a></li>
+					</ul>
+				</li>
+                
+                <li class="submenu active open">
+					<a href="#"><span class="glyphicon glyphicon-pencil"></span> <span>日志管理</span> </a>
+					<ul>
+						<li class="active"><a href="adminlog_list.html">管理员日志</a></li>
+					</ul>
+				</li>
+			</ul>
+		
+		</div>
+
+		
+		<div id="content">
+			<div id="content-header">
+				<h1>管理员日志</h1>
+                <!--
+				<div class="btn-group">
+					<a class="btn btn-large tip-bottom" title="Manage Files"><i class="icon-file"></i></a>
+					<a class="btn btn-large tip-bottom" title="用户管理" href="User_list.html"><i class="icon-user"></i></a>
+					<a class="btn btn-large tip-bottom" title="Manage Comments"><i class="icon-comment"></i><span class="label label-important">5</span></a>
+					<a class="btn btn-large tip-bottom" title="Manage Orders"><i class="icon-shopping-cart"></i></a>
+				</div> -->
+			</div>
+			<div id="breadcrumb">
+				<a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+                <a href="#" class="tip-bottom">日志管理</a>
+				<a href="adminlog_list.html" class="current">管理员操作日志</a>
+			</div>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div  data-tablet="span12 fix-offset" data-desktop="span6">
+					  <!-- BEGIN EXAMPLE TABLE PORTLET-->
+					  <div class="widget-box">
+                        <div class="widget-title portlet-title">
+                            <div class="caption"><i class="icon-cogs"></i>管理员日志记录</div>
+                        </div>
+                        
+                        <div id="loading" class="progress progress-striped active" style="display:none">
+							<div style="width: 80%;" class="bar"></div>
+						</div>
+						<div id="top" class="actions pull-right">
+                            <form id="searchUser" class="navbar-form form-actions" role="search">
+    
+                              <div class="input-group  dateRange">
+                                <span class="input-group-addon">操作时间</span><input type="text" id="searchTime" class="form-control"  placeholder="操作时间"/>    
+                              </div>
+                              <div class="input-group">
+                                 <input type="text" id="searchText" class="form-control" placeholder="模块名、操作内容..."/>
+                              </div>
+                        
+                              <div class="input-group">
+                                 <span class="input-group-btn"><Button type="button" id="searchbtn" class="btn btn-default" title="Search">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                 </Button></span>
+                              </div>
+                           </form>
+                        </div> 
+                        <div class=" widget-content widget-box nopadding" id="div-loglist">
+
+                            <table class="table table-bordered data-table table-striped table-hover with-check " id="loglist">
+                                <thead>
+                                    <tr> 
+                                    
+                                    <th>模块</th>
+                                    <th>操作内容</th>
+                                    <th>操作人员</th>
+                                    <th>操作时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody align="center">
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+					</div>
+
+						<!-- END EXAMPLE TABLE PORTLET-->
+
+				  </div>
+				</div>
+				<div class="row-fluid">
+					<div id="footer" class="span12">
+						2016 &copy;
+					</div>
+				</div>
+			</div>
+		</div>
+
+         <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+         <script src="../js/jquery-migrate-1.2.1.min.js"></script>
+         <script type="text/javascript" src="../js/jquery.ui.custom.js"></script>
+         <script type="text/javascript" src="../js/jquery.uniform.js"></script>
+         <script type="text/javascript" src="../js/select2.min.js"></script>
+         <script type="text/javascript" src="../js/jquery.dataTables.min.js"></script>
+         <script type="text/javascript" src="../js/bootstrap.3.3.7.min.js"></script>
+         <script type="text/javascript" src="../js/dataTables.bootstrap.js"></script>
+         <script src="../js/constant.js"></script>
+         <script type="text/javascript" src="../js/adminlog.js"></script>
+         <script type="text/javascript" src="../js/ajaxfileupload.js"></script>
+         <script type="text/javascript" src="../js/moment.js"></script>
+         <script type="text/javascript" src="../js/daterangepicker.js"></script>
+
+	</body>
+</html>

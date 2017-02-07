@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>编辑小区</title>
+		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+        <link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/bootstrap-responsive.min.css" />
+        <link rel="stylesheet" href="../css/colorpicker.css" />
+        <link rel="stylesheet" href="../css/datepicker.css" />
+		<link rel="stylesheet" href="../css/uniform.css" />
+		<link rel="stylesheet" href="../css/select2.css" />		
+		<link rel="stylesheet" href="../css/unicorn.main.css" />
+		<link rel="stylesheet" href="../css/unicorn.grey.css" class="skin-color" />	
+        <link rel="stylesheet" href="../css/bootstrap-fileupload.css"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+	<body>
+		
+		
+		<div id="header">
+			<h1><a href="Super_Index.html">首頁</a></h1>		
+		</div>
+		
+		<div id="search">
+			<input type="text" placeholder="Search here..." /><button type="submit" class="tip-right" title="Search"><i class="icon-search icon-white"></i></button>
+		</div>
+		<div id="user-nav" class="navbar navbar-inverse">
+            <ul class="nav btn-group">
+                <li class="btn btn-inverse"><a title="修改密码" href="Super_admin_password.html"><i class="icon icon-user"></i> <span class="text">修改密码</span></a></li>
+                <li class="btn btn-inverse"><a title="" href="Login_logOut"><i class="icon icon-share-alt"></i> <span class="text">退出</span></a></li>
+            </ul>
+        </div>
+            
+		<div id="sidebar">
+			
+			<ul>
+				<li><a href="Super_Index.html"><i class="icon icon-home"></i> <span>首页</span></a></li>
+				<li class="submenu">
+					<a href="Super_User_list.html"><i class="icon icon-user"></i> <span>用户管理</span></a>
+					<ul>
+						
+                        <li><a href="Super_User_list.html">用户列表</a></li>
+					</ul>
+				</li>
+				<li class="active submenu open">
+					<a href="Area_list.html"><i class="icon icon-road"></i> <span>小区管理</span> </a>
+					<ul>
+						<li class="active"><a href="Area_add.html">修改小区信息</a></li>
+                        <li><a href="Area_list.html">小区列表</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="Super_Notice_list.html"><i class="icon icon-volume-up"></i> <span>公告通知</span> </a>
+				</li>
+                
+                 <li>
+					<a href="Super_Adminlog_list.html"><span class="glyphicon glyphicon-pencil"></span> <span>日志管理</span> </a>
+					
+				</li>
+			</ul>
+		
+		</div>
+
+		
+		<div id="content">
+			<div id="content-header">
+				<h1>修改小区信息</h1>
+				
+			</div>
+			<div id="breadcrumb">
+				<a href="Super_Index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> 首頁</a>
+				<a href="#" class="tip-bottom">小区管理</a>
+				<a href="#" class="current">修改小区信息</a>
+			</div>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="widget-box">
+							<div class="widget-title">
+								<span class="icon">
+									<i class="icon-align-justify"></i>									
+								</span>
+								<h5>修改小区信息</h5>
+							</div>
+							<div class="widget-content nopadding">
+								<form action="Area_update" method="post" id="areaForm" class="form-horizontal" enctype="multipart/form-data" />
+									<div class="control-group">
+										<label class="control-label">小区名称</label>
+										<div class="controls">
+                                        
+                                        <input type="hidden" id="areaId" name="area.id" placeholder="id"/>	
+											<input type="text" id="areaName" name="area.areaName" placeholder="小区名称..."/>
+										</div>
+									</div>
+                                    <div class="control-group">
+										<label class="control-label">简称</label>
+										<div class="controls">
+											<input type="text" id="fullName" name="area.fullName" placeholder="小区别名或全称"/>
+										</div>
+									</div>
+                                                                      
+                                   <div class="control-group">
+										<label class="control-label">小区地址</label>
+										<div class="controls">
+											<input type="text" id="address" name="area.address" placeholder="所处位置"/>
+										</div>
+									</div>
+                                    <div class="control-group">
+										<label class="control-label">小区简介</label>
+										<div class="controls">
+											<textarea id="area_description" cols="10" rows="10" placeholder="小区介绍" name="area.area_description"  style="width:80%"></textarea>
+										</div>
+									</div>
+									<div class="form-actions">
+										<button type="submit" class="btn btn-primary">修改</button> 
+									</div>
+								</form>
+							</div>
+						</div>						
+					</div>
+				</div>
+
+				<div class="row-fluid">
+					<div id="footer" class="span12">
+						2015 &copy; <a href="https://"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+         <script src="../js/jquery.min.js"></script>
+		 <script src="../js/jquery.ui.custom.js"></script>
+         <script src="../js/bootstrap.min.js"></script>
+         <script src="../js/bootstrap-colorpicker.js"></script>
+         <script src="../js/bootstrap-datepicker.js"></script>
+         <script src="../js/jquery.uniform.js"></script>
+         <script src="../js/select2.min.js"></script>
+         <script src="../js/unicorn.js"></script>
+         <script src="../js/unicorn.form_common.js"></script>
+         <script src="../js/bootstrap-fileupload.js"></script>
+         <script src="../js/jquery.validate.js"></script>
+         <script>
+		 $(document).ready(function(){ 
+		 	var Request = new Object();  
+			//获取url中的参数  
+			Request = GetRequest();  
+	
+			var id=Request['areaId'];   
+			$("#areaId").val(id);
+			$(function(){ 
+			
+				$.ajax({ 
+					url:"admin/Area_edit", 
+					type:"post", 
+					dataType:"json", 
+					data: {areaId:id},
+					 success:function(data){
+						
+						$("#areaName").val(data.areaName);
+						$("#fullName").val(data.fullName);
+						$("#area_description").val(data.area_description);
+						$("#address").val(data.address);
+						if(data.logo=='' || null==data.logo){
+							$("#photo").attr("src","../img/photo.jpg");
+						}else {
+							$("#photo").attr("src",'..'+data.logo);
+						}
+					},
+					error:function(){
+						alert("登录超时，请重新登录！");
+					}
+				}); 
+				
+				
+			});
+		
+		});
+		function GetRequest() {  
+			//url例子：XXX.aspx?ID=" + ID + "&Name=" + Name；  
+			var url = location.search; //获取url中"?"符以及其后的字串  
+			var theRequest = new Object();  
+			if(url.indexOf("?") != -1)//url中存在问号，也就说有参数。  
+			{   
+			  var str = url.substr(1);  
+				strs = str.split("&");  
+			  for(var i = 0; i < strs.length; i ++)  
+				{   
+				 theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);  
+				}  
+			}  
+			return theRequest;  
+		};
+
+		 // Form Validation
+		$("#areaForm").validate({
+			rules:{
+				"area.areaName":{
+					required:true,
+					minlength:1,
+					maxlength:30
+				},
+				
+				"area_description":{
+					maxlength:300
+				}
+			},
+			errorClass: "help-inline",
+			errorElement: "span",
+			highlight:function(element, errorClass, validClass) {
+				$(element).parents('.control-group').addClass('error');
+			},
+			unhighlight: function(element, errorClass, validClass) {
+				$(element).parents('.control-group').removeClass('error');
+				$(element).parents('.control-group').addClass('success');
+			}
+		});
+	 </script>    
+       
+	</body>
+</html>
